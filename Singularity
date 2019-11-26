@@ -11,6 +11,8 @@ From: julia:1.2.0
     export JULIA_PATH=/usr/local/julia
     export PATH=$JULIA_PATH/bin:$PATH
     export COMPILEFOLDER=/opt/julia/compiled/v1.2/
+    export LC_ALL=C.UTF-8
+    export LANG=C.UTF-8
 
 %post
     locale-gen --purge en_US.UTF-8
