@@ -7,8 +7,8 @@ From: julia:1.2.0
 
 
 %post
-    chmod -R 0755 /opt
-    chmod -R 0755 /usr/local/julia
+    chmod -R 777 /opt
+    chmod -R 777 /usr/local/julia
 
     JULIA_DEPOT_PATH=/opt/julia
     JULIA_PKGDIR=/opt/julia
