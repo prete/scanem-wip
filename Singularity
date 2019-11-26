@@ -48,8 +48,9 @@ From: julia:1.2.0
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
 
+
+julia --version
+
+
 %runscript
     exec julia "$@"
-
-# %startscript
-# exec /bin/bash julia "$@"
