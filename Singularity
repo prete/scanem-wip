@@ -1,7 +1,23 @@
 Bootstrap: docker
 From: julia:1.2.0
+
+%help
+    Julia 1.2 docker image
+
+%environment
+    export JULIA_DEPOT_PATH=/opt/julia
+    export JULIA_PKGDIR=/opt/julia
+    export JULIA_VERSION=1.2.0
+    export JULIA_PATH=/usr/local/julia
+    export PATH=$JULIA_PATH/bin:$PATH
+    export COMPILEFOLDER=/opt/julia/compiled/v1.2/
+
 %post
-    chmod -R 700 /opt
+    locale-gen --purge en_US.UTF-8
+    echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
+    
+    chmod -R 0755 /opt
+    chmod -R 0755 /usr/local/julia
 
     JULIA_DEPOT_PATH=/opt/julia
     JULIA_PKGDIR=/opt/julia
@@ -30,16 +46,8 @@ From: julia:1.2.0
     julia -e "Base.compilecache(Base.PkgId(\"CSV\"))" && \
     julia -e "Base.compilecache(Base.PkgId(\"Statistics\"))"
 
-%environment
-    export JULIA_DEPOT_PATH=/opt/julia
-    export JULIA_PKGDIR=/opt/julia
-    export JULIA_VERSION=1.2.0
-    export JULIA_PATH=/usr/local/julia
-    export PATH=$JULIA_PATH/bin:$PATH
-    export COMPILEFOLDER=/opt/julia/compiled/v1.2/
-
 %runscript
-    exec /bin/bash julia "$@"
+    exec julia "$@"
 
 # %startscript
 # exec /bin/bash julia "$@"
