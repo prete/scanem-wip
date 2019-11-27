@@ -5,6 +5,9 @@ From: julia:1.2.0
 %help
     Julia 1.2 docker image
 
+%labels
+    Maintainer @jacobhepkema
+    Version v0.9
 
 %post
     JULIA_PKGDIR=/opt/julia
@@ -43,9 +46,9 @@ From: julia:1.2.0
     export LANG=C.UTF-8
     export JULIA_PATH=/usr/local/julia
     export PATH=$JULIA_PATH/bin:$PATH
-    
-julia --version
 
+# smoke test
+julia --version
 
 %runscript
     exec julia -e "$@"
